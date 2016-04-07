@@ -1,0 +1,17 @@
+(
+	{
+		Identifier = "sourcecode.fivephone";
+		BasedOn = sourcecode;
+		Name = "Fivephone Files";
+		ComputerLanguage = fivephone;
+		Language = "xcode.lang.fivephone";
+		Extensions = (
+			prg,
+		);
+		MIMETypes = (
+			"text/fivephone",
+		);
+		CanSetIncludeInIndex = YES;
+		IsScannedForIncludes = YES;
+	},
+)

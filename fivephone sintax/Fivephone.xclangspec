@@ -1,0 +1,887 @@
+(
+	{
+		Identifier = "xcode.lang.fivephone.preprocessor";
+		Syntax = {
+			Start = "#";
+			EscapeChar = "\\";
+			End = "\n";
+			StartAtBOL = YES;
+			Tokenizer = "xcode.lang.fivephone.preprocessor.lexer";
+			IncludeRules = (
+				"xcode.lang.fivephone.preprocessor.mark",
+				"xcode.lang.fivephone.preprocessor.include",
+				"xcode.lang.fivephone.preprocessor.fileio",			
+			);
+			Type = "xcode.syntax.preprocessor";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.preprocessor.lexer";
+		Syntax = {
+			IncludeRules = (
+				"xcode.lang.comment.headerdoc",
+				"xcode.lang.comment",
+				"xcode.lang.comment.singleline",
+				"xcode.lang.string",
+				"xcode.lang.character",
+				"xcode.lang.number",
+				"xcode.lang.fivephone.preprocessor.identifier",
+				"xcode.lang.fivephone.identifier",
+			);
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.preprocessor.identifier";
+		Syntax = {
+			Words = (
+				debug,
+				error,
+				fclose,
+				fopen,
+				include,
+				read,
+				render,
+				statistics,
+				undef,
+				version,
+				warning,
+				write,
+			);
+			Type = "xcode.syntax.preprocessor.keyword";
+			AltType = "xcode.syntax.preprocessor.identifier";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.preprocessor.mark";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.preprocessor.lexer";
+			Rules = (
+				"xcode.lang.fivephone.preprocessor.mark.therest",
+			);
+			Type = "xcode.syntax.preprocessor";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.preprocessor.mark.therest";
+		Syntax = {
+			Match = (
+				"^[ \t]*mark[ \t]*(.*)$",
+			);
+			CaptureTypes = (
+				"xcode.syntax.mark",
+			);
+			Type = "xcode.syntax.preprocessor";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.preprocessor.fileio";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.preprocessor.lexer";
+			Rules = (
+				"fclose|fopen|read|write",
+				"xcode.lang.fivephone.parenexpr",
+			);
+			Type = "xcode.syntax.preprocessor";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.preprocessor.include.lexer";
+		Syntax = {
+			IncludeRules = (
+				"xcode.lang.comment.headerdoc",
+				"xcode.lang.comment",
+				"xcode.lang.comment.singleline",
+				"xcode.lang.string",
+				"xcode.lang.character",
+				"xcode.lang.number",
+				"xcode.lang.fivephone.identifier",
+				"xcode.lang.fivephone.logicals",
+			);
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.preprocessor.include";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.preprocessor.include.lexer";
+			Rules = (
+				include,
+				"xcode.lang.string",
+			);
+			Type = "xcode.syntax.preprocessor.include";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.identifier";
+		Syntax = {
+	     	CaseSensitive = NO;
+			StartChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
+			Chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+			Words = (
+				"aa_level",
+				"aa_threshold",
+				abs,
+				aadd,
+				aclone,
+				acopy,
+				acos,
+				acosh,
+				adaptive,
+				adel,
+				adir,
+				afill,
+				agate,
+				"agate_turb",
+				all,
+				alltrim,
+				alert,
+				alpha,
+				altitude,
+			  ambient,
+				angle,
+				aperture,
+				append,
+				"arc_angle",
+				"area_light",
+				array,
+				asc,
+				ascii,
+				asin,
+				asinh,
+				asize,
+				asort,
+				"assumed_gamma",
+				atan,
+				atan2,
+				atanh,
+				autostop,
+				average,
+				
+				background,
+				box,
+				boxed,
+				bozo,
+				brick,
+				"brick_size",
+				brightness,
+				brilliance,
+				"bump_map",
+				"bump_size",
+				bumps,
+				camera,
+				caustics,
+				CASE,
+				ceil,
+				cells,
+				charset,
+				checker,
+				checker,
+				chr,
+				circular,
+				"clipped_by",
+				clock,
+				"clock_delta",
+				"clock_on",
+				collect,
+				color,
+				"color_map",
+				colour,
+				component,
+				composite,
+				concat,
+				cone,
+				confidence,
+				"conic_sweep",
+				"conserve_energy",
+				"contained_by",
+				control0,
+				control1,
+				coords,
+				cos,
+				cosh,
+				count,
+				crackle,
+				crand,
+				cube,
+				cubic,
+				cylinder,
+				cylindrical,
+				defined,
+				degrees,
+				density,
+				"density_file",
+				"density_map",
+				dents,
+				df3,
+				difference,
+				diffuse,
+				"dimension_size",
+				dimensions,
+				direction,
+				disc,
+				dispersion,
+				"dispersion_samples",
+				"dist_exp",
+				distance,
+				div,
+				"double_illuminate",
+				eccentricity,
+				emission,
+				enddo,
+				"error_bound",
+				evaluate,
+				exp,
+				"expand_thresholds",
+				exponent,
+				exterior,
+				extinction,
+				"face_indices",
+				facets,
+				"fade_color",
+				"fade_colour",
+				"fade_distance",
+				"fade_power",
+				falloff,
+				"falloff_angle",
+				false,
+				"file_exists",
+				filter,
+				"final_clock",
+				"final_frame",
+				finish,
+				fisheye,
+				flatness,
+				flip,
+				floor,
+				"focal_point",
+				fog,
+				"fog_alt",
+				"fog_offset",
+				"fog_type",
+				for,
+				"frame_number",
+				frequency,
+				fresnel,
+				function,
+				METHOD,
+				DATA,
+				return,
+				gather,
+				gif,
+				GOTO,
+				"global_lights",
+				"global_settings",
+				gradient,
+				granite,
+				gray,
+				"gray_threshold",
+				"height_field",
+				hypercomplex,
+				if,
+				iff,
+				"image_height",
+				"image_map",
+				"image_pattern",
+				"image_width",
+				"initial_clock",
+				"initial_frame",
+				inside,
+				"inside_vector",
+				int,
+				interior,
+				"interior_texture",
+				internal,
+				interpolate,
+				intersection,
+				intervals,
+				inverse,
+				ior,
+				irid,
+				"irid_wavelength",
+				isosurface,
+				jitter,
+				jpeg,
+				lathe,
+				left,
+				"light_group",
+				"light_source",
+				"linear_spline",
+				"linear_sweep",
+				ln,
+				"load_file",
+				location,
+				log,
+				"look_at",
+				"looks_like",
+				"low_error_factor",
+				magnet,
+				"major_radius",
+				mandel,
+				"map_type",
+				marble,
+				material,
+				"material_map",
+				matrix,
+				max,
+				"max_extent",
+				"max_gradient",
+				"max_intersections",
+				"max_iteration",
+				"max_sample",
+				"max_trace",
+				"max_trace_level",
+				media,
+				"media_attenuation",
+				"media_interaction",
+				merge,
+				mesh,
+				mesh2,
+				metallic,
+				method,
+				metric,
+				min,
+				"min_extent",
+				"minimum_reuse",
+				mod,
+				mortar,
+				"natural_spline",
+				"nearest_count",
+				next,
+				no,
+				"no_bump_scale",
+				"no_image",
+				"no_reflection",
+				"no_shadow",
+				"noise_generator",
+				normal,
+				normal,
+				"normal_indices",
+				"normal_map",
+				"normal_vectors",
+				"number_of_waves",
+				object,
+				octaves,
+				off,
+				offset,
+				omega,
+				omnimax,
+				on,
+				once,
+				onion,
+				open,
+				OR,
+				orient,
+				orientation,
+				orthographic,
+				panoramic,
+				parallel,
+				parametric,
+				"pass_through",
+				pattern,
+				perspective,
+				pgm,
+				phase,
+				phong,
+				"phong_size",
+				photons,
+				pi,
+				pigment,
+				"pigment_map",
+				"pigment_pattern",
+				planar,
+				plane,
+				png,
+				"point_at",
+				poly,
+				"poly_wave",
+				polygon,
+				pot,
+				pow,
+				ppm,
+				precision,
+				precompute,
+				"pretrace_end",
+				"pretrace_start",
+				prism,
+				prod,
+				"projected_through",
+				pwr,
+			    "quick_color",
+				"quick_colour",
+				quilted,
+				radial,
+				radians,
+				radiosity,
+				radius,
+				rainbow,
+				"ramp_wave",
+				rand,
+				range,
+				ratio,
+				reciprocal,
+				"recursion_limit",
+				red,
+				reflection,
+				"reflection_exponent",
+				refraction,
+				repeat,
+				rgb,
+				right,
+				ripples,
+				rotate,
+				roughness,
+				"save_file",
+				scale,
+				"scallop_wave",
+				scattering,
+				seed,
+				select,
+				sin,
+				sinh,
+				size,
+				sky,
+				"sky_sphere",
+				slice,
+				slope,
+				"slope_map",
+				smooth,
+				"smooth_triangle",
+				solid,
+				sor,
+				space,
+				spline,
+				"split_union",
+				spotlight,
+				spotted,
+				sqr,
+				sqrt,
+				str,
+				strcmp,
+				strength,
+				strlen,
+				strlwr,
+				strupr,
+				sturm,
+				substr,
+				sum,
+				sys,
+				t,
+				tan,
+				tanh,
+				target,
+				text,
+				texture,
+				"texture_list",
+				"texture_map",
+				tga,
+				thickness,
+				threshold,
+				tiff,
+				tightness,
+				tile2,
+				tiles,
+				tolerance,
+				toroidal,
+				torus,
+				trace,
+				transform,
+				translate,
+				transmit,
+				triangle,
+				trim,
+				true,
+				ttf,
+				"turb_depth",
+				turbulence,
+				type,
+				u,
+				"u_steps",
+				"ultra_wide_angle",
+				union,
+				up,
+				USE,
+				utf8,
+				"uv_indices",
+				"uv_mapping",
+				"uv_vectors",
+				v,
+				"v_steps",
+				val,
+				variance,
+				"vaxis_rotate",
+				vcross,
+				vdot,
+				"vertex_vectors",
+				vlength,
+				vnormalize,
+				vrotate,
+				vstr,
+				vturbulence,
+				warp,
+				"water_level",
+				waves,
+				width,
+				while,
+				wood,
+				wrinkles,
+				x,
+				y,
+				yes,
+				z,
+				if,
+				else,
+				"#macro",
+				do,
+				"#switch",
+				end,
+				endif,
+				"#declare",
+				"#DEFINE",
+				local,
+				DEFAULT,
+			);
+			Type = "xcode.syntax.keyword";
+			AltType = "xcode.syntax.identifier";
+		};
+	},
+	  {
+        Identifier = "xcode.lang.fivephone.logicals";
+        Syntax = {
+         StartChars = "=*-+/:,.";
+  			Chars = "=*-+/:,.notadr";
+			Words = (
+                "=",
+                "+",
+                "-",
+                "*",
+                "/",
+                "==",
+                "<",
+                ">",
+                "=>",
+                "<=",
+                ".not.",
+                ".and.",
+                ".or."
+             );
+            Type = "xcode.syntax.character";
+        };
+    },
+	{
+		Identifier = "xcode.lang.fivephone.symbol";
+		Syntax = {
+			Words = (
+				"{",
+				"}",
+				"[",
+				"]",
+				"(",
+				")",
+				",",
+				".",
+				"<",
+				">",
+				"=",
+				"+",
+				"-",
+				"!",
+				"%",
+				"^",
+				"*",
+				"/",
+				"&",
+				"|",
+				";",
+				":",
+				"\\",
+			);
+			Type = "xcode.syntax.symbol";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone";
+		Description = "Fivephone Coloring";
+		IncludeInMenu = YES;
+		BasedOn = "xcode.lang.simpleColoring";
+		Name = Fivephone;
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			IncludeRules = (
+				"xcode.lang.fivephone.block.toplevel",
+				"xcode.lang.fivephone.if",
+				"xcode.lang.fivephone.while",
+				"xcode.lang.fivephone.macro",
+				"xcode.lang.fivephone.declare",
+				"xcode.lang.fivephone.default",
+				"xcode.lang.fivephone.bracketexpr",
+				"xcode.lang.fivephone.parenexpr",
+				"xcode.lang.fivephone.initializer",
+				"xcode.lang.fivephone.logicals",
+				"xcode.lang.fivephone.method.declaration",
+				"xcode.lang.fivephone.function.declaration",
+				
+			);
+			Type = "xcode.syntax.plain";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.block.toplevel";
+		BasedOn = "xcode.lang.fivephone.block";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Start = function;
+			End = return;
+			Foldable = YES;
+			IncludeRules = (
+				"xcode.lang.fivephone.block",
+				"xcode.lang.fivephone.if",
+				"xcode.lang.fivephone.while",
+				"xcode.lang.fivephone.macro",
+				"xcode.lang.fivephone.declare",
+				"xcode.lang.fivephone.default",
+				"xcode.lang.fivephone.bracketexpr",
+				"xcode.lang.fivephone.parenexpr",
+				"xcode.lang.fivephone.initializer",
+				"xcode.lang.fivephone.logicals",
+				"xcode.lang.fivephone.method.declaration",
+				"xcode.lang.fivephone.function.declaration",
+			);
+			Type = "xcode.syntax.plain";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.lexer";
+		Syntax = {
+			IncludeRules = (
+				"xcode.lang.comment.headerdoc",
+				"xcode.lang.comment",
+				"xcode.lang.comment.singleline",
+				"xcode.lang.string",
+				"xcode.lang.character",
+				"xcode.lang.completionplaceholder",
+				"xcode.lang.fivephone.identifier",
+				"xcode.lang.number",
+				"xcode.lang.fivephone.symbol",
+				"xcode.lang.fivephone.logicals",
+				"xcode.lang.fivephone.method.declaration",
+				"xcode.lang.fivephone.function.declaration",
+			);
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.if";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Start = if;
+			End = endif;
+			Foldable = YES;
+			Recursive = YES;
+			StartAtBOL = YES;
+			IncludeRules = (
+				"xcode.lang.fivephone.block",
+				"xcode.lang.fivephone.if",
+				"xcode.lang.fivephone.while",
+				"xcode.lang.fivephoney.macro",
+				"xcode.lang.fivephone.bracketexpr",
+				"xcode.lang.fivephone.parenexpr",
+				"xcode.lang.fivephone.initializer",
+				"xcode.lang.fivephone.logicals",
+				"xcode.lang.fivephone.method.declaration",
+				"xcode.lang.fivephone.function.declaration",
+			);
+			Type = "xcode.syntax.plain";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.for";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Start = for;
+			End = next ;
+			Foldable = YES;
+			Recursive = YES;
+			StartAtBOL = YES;
+			IncludeRules = (
+				"xcode.lang.fivephone.block",
+				"xcode.lang.fivephone.if",
+				"xcode.lang.fivephone.while",
+				"xcode.lang.fivephoney.macro",
+				"xcode.lang.fivephone.bracketexpr",
+				"xcode.lang.fivephone.parenexpr",
+				"xcode.lang.fivephone.initializer",
+				"xcode.lang.fivephone.logicals",
+				"xcode.lang.fivephone.method.declaration",
+				"xcode.lang.fivephone.function.declaration",
+			);
+			Type = "xcode.syntax.plain";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.while";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Start= do ;
+			End = enddo ;
+			Foldable = YES;
+			Recursive = YES;
+			StartAtBOL = YES;
+			IncludeRules = (
+				"xcode.lang.fivephone.block",
+				"xcode.lang.fivephone.if",
+				"xcode.lang.fivephone.while",
+				"xcode.lang.fivephone.macro",
+				"xcode.lang.fivephone.bracketexpr",
+				"xcode.lang.fivephone.parenexpr",
+				"xcode.lang.fivephone.initializer",
+				"xcode.lang.fivephone.logicals",
+				"xcode.lang.fivephone.method.declaration",
+				"xcode.lang.fivephone.function.declaration",
+			);
+			Type = "xcode.syntax.plain";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.macro";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Start = "#macro";
+			End = "#end";
+			Foldable = YES;
+			Recursive = YES;
+			StartAtBOL = YES;
+			IncludeRules = (
+				"xcode.lang.fivephone.block",
+				"xcode.lang.fivephone.if",
+				"xcode.lang.fivephone.while",
+				"xcode.lang.fivephone.macro",
+				"xcode.lang.fivephone.bracketexpr",
+				"xcode.lang.fivephone.parenexpr",
+				"xcode.lang.fivephone.initializer",
+				"xcode.lang.fivephone.logicals",
+				"xcode.lang.fivephone.method.declaration",
+				"xcode.lang.fivephone.function.declaration",
+			);
+			Type = "xcode.syntax.declaration.function";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.declare";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Rules = (
+				"#declare|#local|#define",
+				"xcode.lang.fivephone.declare.name",
+				"xcode.lang.fivephone.initializer",
+			);
+			Type = "xcode.syntax.declaration.class";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.declare.name";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Rules = (
+				"xcode.lang.fivephone.identifier",
+			);
+			Type = "xcode.syntax.identifier.variable";
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.default";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Rules = (
+				default,
+				"xcode.lang.fivephone.block",
+			);
+			Type = "xcode.syntax.preprocessor";
+		};
+	},
+	
+	
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// function
+
+	{
+		Identifier = "xcode.lang.fivephone.function.declaration";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Rules = (
+				"function",
+				"xcode.lang.fivephone.identifier",			
+			);
+			Type = "xcode.syntax.declaration.function";
+		};
+	},
+
+	{
+		Identifier = "xcode.lang.fivephone.method.declaration";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Rules = (
+				"Method",
+				"xcode.lang.go.identifier",
+					);
+			Type = "xcode.syntax.declaration.method";
+		};
+	},
+
+	
+// ----------------------------------------------------------------------------
+// Blocks
+
+	{
+		Identifier = "xcode.lang.fivephone.block";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Start = "{";
+			End = "}";
+			Foldable = YES;
+			Recursive = YES;
+			IncludeRules = (
+				"xcode.lang.fivephone.bracketexpr",
+				"xcode.lang.fivephone.parenexpr",
+			);
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.parenexpr";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Start = "(";
+			End = ")";
+			Recursive = YES;
+			IncludeRules = (
+				"xcode.lang.fivephone.block",
+				"xcode.lang.fivephone.bracketexpr",
+			);
+		};
+	},
+	{
+		Identifier = "xcode.lang.fivephone.bracketexpr";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Start = "[";
+			End = "]";
+			Recursive = YES;
+			IncludeRules = (
+				"xcode.lang.fivephone.parenexpr",
+			);
+		};
+	},
+	
+	{
+		Identifier = "xcode.lang.fivephone.initializer";
+		Syntax = {
+			Tokenizer = "xcode.lang.fivephone.lexer";
+			Start = ":=";
+			End = "\n";
+			Recursive = NO;
+			IncludeRules = (
+				"xcode.lang.fivephone.parenexpr",
+				"xcode.lang.fivephone.bracketexpr",
+				"xcode.lang.fivephone.block",
+			);
+		};
+	},
+)

@@ -1,0 +1,7 @@
+* Finally we have been able to launch the applications on iOS 4.1 !!! :-)
+
+* Please review all project changes in:
+http://code.google.com/p/fivephone/source/list
+
+* For comments and bugs report:
+http://forums.fivetechsupport.com/viewtopic.php?f=8&t=20079&start=0
